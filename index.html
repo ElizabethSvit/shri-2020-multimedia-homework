@@ -5,14 +5,14 @@
     <title>Test streams</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="initVideo.js"></script>
-    <style>
-        .video {
-            width: 300px;
-            height: 200px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+
+<button class="remove-tag">
+    < Все камеры
+</button>
 
 <video id="video-1" class="video" controls muted autoplay></video>
 <video id="video-2" class="video" controls muted autoplay></video>
@@ -40,6 +40,38 @@
         'http://localhost:9191/live?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fstreet%2Fmaster.m3u8'
     );
 
+    $('.remove-tag').click(function(evt) {
+        window.location.reload();
+        $('.remove-tag').hide();
+    });
+
+    $('#video-1').click(function(evt) {
+        evt.preventDefault();
+        $('#video-1').toggleClass('animate');
+        $('#video-2, #video-3, #video-4').hide();
+        $('.remove-tag').show();
+    });
+
+    $('#video-2').click(function(evt) {
+        evt.preventDefault();
+        $('#video-2').toggleClass('animate');
+        $('#video-1, #video-3, #video-4').hide();
+        $('.remove-tag').show();
+    });
+
+    $('#video-3').click(function(evt) {
+        evt.preventDefault();
+        $('#video-3').toggleClass('animate');
+        $('#video-2, #video-1, #video-4').hide();
+        $('.remove-tag').show();
+    });
+
+    $('#video-4').click(function(evt) {
+        evt.preventDefault();
+        $('#video-4').toggleClass('animate');
+        $('#video-1, #video-3, #video-2').hide();
+        $('.remove-tag').show();
+    });
 </script>
 
 

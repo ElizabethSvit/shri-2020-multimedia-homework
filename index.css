@@ -1,0 +1,34 @@
+.video {
+    width: 300px;
+    height: 200px;
+}
+
+.remove-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: none;
+    padding: 10px;
+    background-color: pink;
+    border-radius: 5px;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: large;
+    z-index: 5;
+}
+
+#video-1, #video-2, #video-3, #video-4 {
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+#video-1.animate, #video-2.animate, #video-3.animate, #video-4.animate {
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+    height:100vh;
+    z-index: 3;
+    background-color: white;
+}
