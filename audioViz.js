@@ -3,7 +3,8 @@ const WIDTH = 450;
 const HEIGHT = 70;
 
 export function initiate(currentVideoId) {
-    context = context || new AudioContext();
+    if (context) context.close();
+    context = new AudioContext();
     let canvas = document.getElementById('audio-canvas');
     canvasCtx = canvas.getContext('2d');
 
