@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Test streams</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="initVideo.js"></script>
+    <script src="index.js" type="module"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -13,67 +13,31 @@
 <button class="remove-tag">
     < Все камеры
 </button>
-
+<div class="sliders">
+    <label class="sliderBright">Яркость: <input type="range" min="1" max="10"
+                                                       id="toggle-bright" value="5" oninput="changeBrightness()"></label>
+    <label class="sliderContrast">Контраст: <input type="range" min="1" max="10"
+                                                          id="toggle-contrast" value="5" oninput="changeContrast()"></label>
+</div>
 <video id="video-1" class="video" controls muted autoplay></video>
 <video id="video-2" class="video" controls muted autoplay></video>
 <br>
 <video id="video-3" class="video" controls muted autoplay></video>
 <video id="video-4" class="video" controls muted autoplay></video>
 <script>
-    initVideo(
-        document.getElementById('video-1'),
-        'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fsosed%2Fmaster.m3u8'
-    );
+    let currentVideoId = '';
 
-    initVideo(
-        document.getElementById('video-2'),
-        'http://localhost:9191/live?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fstairs%2Fmaster.m3u8'
-    );
+    function changeBrightness() {
+        const value = document.getElementById("toggle-bright").value;
+        const video = document.getElementById(currentVideoId);
+        video.style.filter = `brightness(${0.2 * value})`;
+    }
 
-    initVideo(
-        document.getElementById('video-3'),
-        'http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fdog%2Fmaster.m3u8'
-    );
-
-    initVideo(
-        document.getElementById('video-4'),
-        'http://localhost:9191/live?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2Fstreet%2Fmaster.m3u8'
-    );
-
-    $('.remove-tag').click(function(evt) {
-        window.location.reload();
-        $('.remove-tag').hide();
-    });
-
-    $('#video-1').click(function(evt) {
-        evt.preventDefault();
-        $('#video-1').toggleClass('animate');
-        $('#video-2, #video-3, #video-4').hide();
-        $('.remove-tag').show();
-    });
-
-    $('#video-2').click(function(evt) {
-        evt.preventDefault();
-        $('#video-2').toggleClass('animate');
-        $('#video-1, #video-3, #video-4').hide();
-        $('.remove-tag').show();
-    });
-
-    $('#video-3').click(function(evt) {
-        evt.preventDefault();
-        $('#video-3').toggleClass('animate');
-        $('#video-2, #video-1, #video-4').hide();
-        $('.remove-tag').show();
-    });
-
-    $('#video-4').click(function(evt) {
-        evt.preventDefault();
-        $('#video-4').toggleClass('animate');
-        $('#video-1, #video-3, #video-2').hide();
-        $('.remove-tag').show();
-    });
+    function changeContrast() {
+        const value = document.getElementById("toggle-contrast").value;
+        const video = document.getElementById(currentVideoId);
+        video.style.filter = `contrast(${0.2 * value})`;
+    }
 </script>
-
-
 </body>
 </html>

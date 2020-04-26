@@ -1,4 +1,4 @@
-function initVideo(video, url) {
+export function initVideo(video, url) {
     if (Hls.isSupported()) {
         var hls = new Hls();
         hls.loadSource(url);
