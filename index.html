@@ -10,20 +10,25 @@
 </head>
 <body>
 
-<button class="remove-tag">
-    < Все камеры
-</button>
-<div class="sliders">
-    <label class="sliderBright">Яркость: <input type="range" min="1" max="10"
-                                                       id="toggle-bright" value="5" oninput="changeBrightness()"></label>
-    <label class="sliderContrast">Контраст: <input type="range" min="1" max="10"
-                                                          id="toggle-contrast" value="5" oninput="changeContrast()"></label>
+<div class="background"></div>
+<div class="controls">
+    <button class="remove-tag">
+        < Все камеры
+    </button>
+    <div class="sliders">
+        <label class="sliderBright">Яркость: <input type="range" min="1" max="10"
+                                                    id="toggle-bright" value="5" oninput="changeBrightness()"></label>
+        <label class="sliderContrast">Контраст: <input type="range" min="1" max="10" id="toggle-contrast" value="5" oninput="changeContrast()"></label>
+    </div>
 </div>
-<video id="video-1" class="video" controls muted autoplay></video>
-<video id="video-2" class="video" controls muted autoplay></video>
-<br>
-<video id="video-3" class="video" controls muted autoplay></video>
-<video id="video-4" class="video" controls muted autoplay></video>
+<div class="container">
+    <div class="video_wrapper"><video id="video-1" class="video" controls muted autoplay></video></div>
+    <div class="video_wrapper"><video id="video-2" class="video" controls muted autoplay></video></div>
+    <div class="video_wrapper"><video id="video-3" class="video" controls muted autoplay></video></div>
+    <div class="video_wrapper"><video id="video-4" class="video" controls muted autoplay></video></div>
+</div>
+<canvas id="audio-canvas" width="450" height="70"></canvas>
+<script src="audioViz.js" type="module"></script>
 <script>
     let currentVideoId = '';
 
